@@ -1,0 +1,11 @@
+config:
+  target: "https://d7vb6ui44lpjowt7mgrjsa7z4e0gzhdp.lambda-url.eu-west-3.on.aws"
+  phases:
+    - duration: 60
+      arrivalRate: 50
+  timeout: 60
+scenarios:
+  - name: "Test endpoint stored-int"
+    flow:
+      - get:
+          url: "/stored-int"
