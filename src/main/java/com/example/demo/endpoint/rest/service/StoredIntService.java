@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.example.demo.endpoint.rest.service;
 
 import com.example.demo.file.bucket.BucketComponent;
 import java.io.File;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class StoredIntService {
   private final BucketComponent bucketComponent;
-  private static final String FILE_NAME = "stored-int.txt";
+  private static final String FILE_NAME = "/tmp/stored-int.txt";
   private static final Random random = new Random();
 
   @SneakyThrows
@@ -28,7 +28,7 @@ public class StoredIntService {
       int randomNumber = random.nextInt(1000);
       String numberStr = String.valueOf(randomNumber);
 
-      FileWriter writer = new FileWriter(FILE_NAME);
+      FileWriter writer = new FileWriter(file);
       writer.write(numberStr);
       writer.close();
 
