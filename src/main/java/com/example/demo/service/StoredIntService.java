@@ -13,27 +13,26 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class StoredIntService {
-    private final BucketComponent bucketComponent;
-    private static final String FILE_NAME = "stored-int.txt";
-    private static final Random random = new Random();
+  private final BucketComponent bucketComponent;
+  private static final String FILE_NAME = "stored-int.txt";
+  private static final Random random = new Random();
 
-    @SneakyThrows
-    public String handleStoredInt() {
-        File file = new File(FILE_NAME);
+  @SneakyThrows
+  public String handleStoredInt() {
+    File file = new File(FILE_NAME);
 
-        if (file.exists()) {
-            String content = new String(Files.readAllBytes(Paths.get(FILE_NAME)));
-            return "Nombre stocké: " + content;
-        } else {
-            int randomNumber = random.nextInt(1000);
-            String numberStr = String.valueOf(randomNumber);
+    if (file.exists()) {
+      String content = new String(Files.readAllBytes(Paths.get(FILE_NAME)));
+      return "Nombre stocké: " + content;
+    } else {
+      int randomNumber = random.nextInt(1000);
+      String numberStr = String.valueOf(randomNumber);
 
-            FileWriter writer = new FileWriter(FILE_NAME);
-            writer.write(numberStr);
-            writer.close();
+      FileWriter writer = new FileWriter(FILE_NAME);
+      writer.write(numberStr);
+      writer.close();
 
-            return "Nouveau nombre généré: " + numberStr;
-        }
+      return "Nouveau nombre généré: " + numberStr;
     }
+  }
 }
-
