@@ -3,7 +3,6 @@ config:
   phases:
     - duration: 60
       arrivalRate: 50
-  timeout: 60
 scenarios:
   - name: "Test endpoint stored-int"
     flow:
